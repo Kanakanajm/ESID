@@ -16,6 +16,8 @@ from drf_yasg import openapi
 from src.users.urls import users_router
 from src.api.urls import api_router, urlpatterns as api_urlpatterns
 
+import src.protected.views as protected_views
+
 schema_view = get_schema_view(
     openapi.Info(title="Pastebin API", default_version='v1'),
     public=False,
@@ -44,6 +46,11 @@ urlpatterns += [
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
+    # protected, routes to test out the oauth authentication scheme
+    path('protected/public', protected_views.public),
+    path('protected/private', protected_views.private),
+    path('protected/private-scoped', protected_views.private_scoped),
+    
     # swagger docs
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

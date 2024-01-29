@@ -6,13 +6,14 @@
 from authlib.integrations.django_oauth2 import ResourceProtector
 from django.http import JsonResponse
 from . import validator
+import os
 
 require_auth = ResourceProtector()
 
 # As configured in https://manage.auth0.com/ under Applications>APIs>ESID Backend Auth Test
 validator = validator.Auth0JWTBearerTokenValidator(
-    "dev-5ogie5ewl34fszeb.us.auth0.com",
-    "https://back.esid.test.com"
+    os.getenv('OAUTH_DOMAIN'),
+    os.getenv('OAUTH_AUDIENCE'),
 )
 require_auth.register_token_validator(validator)
 

@@ -33,9 +33,9 @@ def private(request):
     return JsonResponse(dict(message=response))
 
 
-@require_auth("read:messages")
+@require_auth("read:admin-messages")
 def private_scoped(request):
     """A valid access token and an appropriate scope are required to access this route
     """
-    response = "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this."
+    response = "Hello from a private endpoint! You need to be authenticated and have a scope of read:admin-messages to see this."
     return JsonResponse(dict(message=response))

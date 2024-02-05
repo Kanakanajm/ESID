@@ -89,6 +89,8 @@
     "react-i18next": "^11.8.15",
     "react-lazyload": "^3.2.0",
     "react-markdown": "^6.0.3",
+    "react-oauth2-code-pkce": "^1.16.0",
+    "react-oauth2-pkce": "^2.0.7",
     "react-redux": "^7.2.3",
     "react-scroll-sync": "^0.11.0",
     "redux": "^4.0.5",

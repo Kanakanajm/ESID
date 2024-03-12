@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 German Aerospace Center (DLR)
+// SPDX-License-Identifier: Apache-2.0
+
 import React, {MouseEvent} from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import {useTranslation} from 'react-i18next';
@@ -8,12 +11,14 @@ import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Snackbar from '@mui/material/Snackbar';
-import ChangelogDialog from './PopUps/ChangelogDialog';
-import ImprintDialog from './PopUps/ImprintDialog';
-import PrivacyPolicyDialog from './PopUps/PrivacyPolicyDialog';
-import AccessibilityDialog from './PopUps/AccessibilityDialog';
-import AttributionDialog from './PopUps/AttributionDialog';
 import Box from '@mui/system/Box';
+
+// Let's import pop-ups only once they are opened.
+const ChangelogDialog = React.lazy(() => import('./PopUps/ChangelogDialog'));
+const ImprintDialog = React.lazy(() => import('./PopUps/ImprintDialog'));
+const PrivacyPolicyDialog = React.lazy(() => import('./PopUps/PrivacyPolicyDialog'));
+const AccessibilityDialog = React.lazy(() => import('./PopUps/AccessibilityDialog'));
+const AttributionDialog = React.lazy(() => import('./PopUps/AttributionDialog'));
 
 /**
  * This menu is found at the top right of the application and is reachable from everywhere. It contains ways to access

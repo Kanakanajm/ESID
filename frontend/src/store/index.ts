@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 German Aerospace Center (DLR)
+// SPDX-License-Identifier: Apache-2.0
+
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import DataSelectionReducer from './DataSelectionSlice';
 import {caseDataApi} from './services/caseDataApi';
@@ -7,17 +10,19 @@ import UserPreferenceReducer from './UserPreferenceSlice';
 import {persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {groupApi} from './services/groupApi';
+import LayoutReducer from './LayoutSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['dataSelection', 'userPreference', 'scenarioList'],
+  whitelist: ['dataSelection', 'userPreference'],
 };
 
 const rootReducer = combineReducers({
   dataSelection: DataSelectionReducer,
   scenarioList: ScenarioReducer,
   userPreference: UserPreferenceReducer,
+  layoutSlice: LayoutReducer,
   [caseDataApi.reducerPath]: caseDataApi.reducer,
   [scenarioApi.reducerPath]: scenarioApi.reducer,
   [groupApi.reducerPath]: groupApi.reducer,
@@ -31,7 +36,7 @@ export const Store = configureStore({
       serializableCheck: {
         ignoredActions: ['persist/PERSIST'],
       },
-    }).concat(caseDataApi.middleware, scenarioApi.middleware),
+    }).concat(caseDataApi.middleware, scenarioApi.middleware, groupApi.middleware),
 });
 
 export const Persistor = persistStore(Store);

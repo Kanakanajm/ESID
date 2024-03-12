@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2024 German Aerospace Center (DLR)
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # ESID Changelog
 
 ## vX.X.X-alpha
@@ -12,6 +17,8 @@
   - On selecting the card the case data will be displayed on the rest of the application correspondingly.
   - It is now also possible to view case data without any scenario activated.
 - Next to the list of infection states, there is now an info box for each infection state. Currently, all states have the same information.
+- The reference day is now editable. A line is being drawn to the chart to show the connection.
+- The zoom control of the map now has an additional button to reset the view to the initial overview
 
 ### Improvements
 
@@ -30,12 +37,14 @@
 - "Case Data" was renamed to "Estimated Cases" and new translations for new infection states were added.
 - The text size in tooltips was adjusted to improve readability.
 - Only four aggregated compartments are displayed.
+- Internal build system was replaced by Vite, which improves website performance.
 
 ### Bug fixes
 
 - An error was fixed, which prevented the text in the search bar to be translated on an initial site visit.
 - Fixed an error, where districts with missing values weren't shown.
 - Fixed an error, which crashed the website when the data was updated.
+- Fixed an error, which crashed the website when a scenario was removed from the database.
 
 ---
 
